@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PARK-AI | Smart Parking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">🚗</div>
+
+            <div class="logo-text">
+                <h1>PARK-AI</h1>
+                <p>SMART PARKING</p>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button type="button" class="nav-item active" data-target="dashboard">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="find-best-slot">
+                <span class="nav-icon">⌕</span>
+                <span>Find Best Slot</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="my-reservations">
+                <span class="nav-icon">▣</span>
+                <span>My Reservations</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="parking-map">
+                <span class="nav-icon">P</span>
+                <span>Parking Map</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="statistics">
+                <span class="nav-icon">▥</span>
+                <span>Statistics</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="settings">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </button>
+
+            <button type="button" class="nav-item" data-target="help">
+                <span class="nav-icon">?</span>
+                <span>Help</span>
+            </button>
+
+        </nav>
+
+
+        <!-- AI CARD -->
+        <div class="sidebar-ai-card">
+
+            <h3>Let AI Park Smartly</h3>
+
+            <div class="sidebar-car">
+                🚙
+            </div>
+
+            <p>
+                AI finds the perfect
+                parking spot for you!
+            </p>
+
+        </div>
+
+
+        <div class="sidebar-footer">
+            <p>© 2026 PARK-AI</p>
+            <span>All rights reserved.</span>
+            <strong>♥</strong>
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN DASHBOARD
+    ========================== -->
+    <main class="dashboard" id="dashboard">
+
+        <!-- HEADER -->
+        <header class="top-header">
+
+            <div class="welcome">
+
+                <p class="small-title">
+                    SMART PARKING ALLOCATION SYSTEM
+                </p>
+
+                <h2>
+                    Welcome to PARK-AI
+                </h2>
+
+                <p>
+                    Intelligent parking made simple.
+                </p>
+
+            </div>
+
+
+            <!-- TOP STATISTICS -->
+            <div class="top-stats">
+
+                <div class="top-stat">
+                    <span>Available Slots</span>
+                    <strong id="availableCount">7</strong>
+                    <small>🚗</small>
+                </div>
+
+                <div class="top-stat">
+                    <span>Occupied Slots</span>
+                    <strong id="topOccupied">3</strong>
+                    <small>🚘</small>
+                </div>
+
+                <div class="top-stat">
+                    <span>Total Slots</span>
+                    <strong id="topTotal">10</strong>
+                    <small>🅿️</small>
+                </div>
+
+                <div class="top-time">
+                    <strong id="currentTime">10:30 AM</strong>
+                    <span id="currentDate">24 May 2026</span>
+                    <b>🌙</b>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             MAIN GRID
+        ========================== -->
+        <div class="dashboard-grid">
+
+            <!-- =====================
+                 PARKING AREA
+            ====================== -->
+            <section class="parking-section" id="parking-map">
+
+                <div class="parking-header">
+
+                    <div>
+                        <h2>🅿️ Parking Area</h2>
+                        <p>Live parking availability</p>
+                    </div>
+
+                    <div class="live-status">
+                        <span class="status-dot"></span>
+                        LIVE
+                    </div>
+
+                </div>
+
+
+                <!-- LEGEND -->
+                <div class="parking-legend">
+
+    <span>
+        <i class="legend available"></i>
+        Available
+    </span>
+
+    <span>
+        <i class="legend occupied"></i>
+        Occupied
+    </span>
+
+    <span>
+        <i class="legend ev"></i>
+        EV Charging
+    </span>
+
+    <span>
+        <i class="legend reserved"></i>
+        Reserved
+    </span>
+
+    <span>
+        <i class="legend maintenance"></i>
+        Maintenance
+    </span>
+
+</div>
+
+
+
+                <!-- =====================
+                     PARKING LOT
+                ====================== -->
+                <div class="parking-lot">
+
+    <!-- PARKING BUILDING -->
+    <div class="lot-building">
+
+        <div class="building-sign">
+            <strong>PARK-AI</strong>
+            <span>SMART PARKING</span>
+        </div>
+
+        <div class="building-lights">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ROW A
+    ========================== -->
+
+    <div class="parking-map-row">
+
+        <div
+            class="parking-slot available"
+            id="slot-A1"
+            data-slot="A1"
+            data-status="Available"
+        >
+            <div class="slot-number">A1</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+
+        <div
+            class="parking-slot occupied"
+            id="slot-A2"
+            data-slot="A2"
+            data-status="Occupied"
+        >
+            <div class="slot-number">A2</div>
+            <div class="slot-icon">🚗</div>
+            <span>Occupied</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-A3"
+            data-slot="A3"
+            data-status="Available"
+        >
+            <div class="slot-number">A3</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+
+        <div
+            class="parking-slot ev"
+            id="slot-A4"
+            data-slot="A4"
+            data-status="EV"
+        >
+            <div class="slot-feature">⚡</div>
+            <div class="slot-number">A4</div>
+            <span>EV Charging</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-A5"
+            data-slot="A5"
+            data-status="Available"
+        >
+            <div class="slot-number">A5</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+    </div>
+
+
+    <!-- DRIVING LANE -->
+
+    <div class="driving-lane">
+
+        <span>DRIVING LANE</span>
+
+        <div class="lane-arrow">
+            ↑
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ROW B
+    ========================== -->
+
+    <div class="parking-map-row">
+
+        <div
+            class="parking-slot available"
+            id="slot-B1"
+            data-slot="B1"
+            data-status="Accessible"
+        >
+            <div class="slot-feature">♿</div>
+            <div class="slot-number">B1</div>
+            <span>Accessible</span>
+        </div>
+
+
+        <div
+            class="parking-slot occupied"
+            id="slot-B2"
+            data-slot="B2"
+            data-status="Occupied"
+        >
+            <div class="slot-number">B2</div>
+            <div class="slot-icon">🚗</div>
+            <span>Occupied</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-B3"
+            data-slot="B3"
+            data-status="Available"
+        >
+            <div class="slot-number">B3</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+
+        <div
+            class="parking-slot reserved"
+            id="slot-B4"
+            data-slot="B4"
+            data-status="Reserved"
+        >
+            <div class="slot-feature">🔒</div>
+            <div class="slot-number">B4</div>
+            <span>Reserved</span>
+        </div>
+
+
+        <div
+            class="parking-slot occupied"
+            id="slot-B5"
+            data-slot="B5"
+            data-status="Occupied"
+        >
+            <div class="slot-number">B5</div>
+            <div class="slot-icon">🚗</div>
+            <span>Occupied</span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ROW C
+    ========================== -->
+
+    <div class="parking-map-row">
+
+        <div
+            class="parking-slot maintenance"
+            id="slot-C1"
+            data-slot="C1"
+            data-status="Maintenance"
+        >
+            <div class="slot-feature">🔧</div>
+            <div class="slot-number">C1</div>
+            <span>Maintenance</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-C2"
+            data-slot="C2"
+            data-status="Available"
+        >
+            <div class="slot-number">C2</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+
+        <div
+            class="parking-slot occupied"
+            id="slot-C3"
+            data-slot="C3"
+            data-status="Occupied"
+        >
+            <div class="slot-number">C3</div>
+            <div class="slot-icon">🚗</div>
+            <span>Occupied</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-C4"
+            data-slot="C4"
+            data-status="Available"
+        >
+            <div class="slot-number">C4</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+
+        <div
+            class="parking-slot available"
+            id="slot-C5"
+            data-slot="C5"
+            data-status="Available"
+        >
+            <div class="slot-number">C5</div>
+            <div class="slot-icon">🚗</div>
+            <span>Available</span>
+        </div>
+
+    </div>
+
+
+    <!-- ENTRANCE -->
+
+    <div class="parking-entrance">
+
+        <div class="entrance-road"></div>
+
+        <div class="entrance-sign">
+
+            <strong>🅿</strong>
+
+            <span>
+                ENTRANCE
+            </span>
+
+        </div>
+
+        <div class="entrance-arrow">
+            ↓
+        </div>
+
+    </div>
+
+</div>
+
+
+                    
+
+            </section>
+
+
+
+            <!-- =====================
+                 AI CONTROL PANEL
+            ====================== -->
+            <aside class="control-panel" id="find-best-slot">
+
+                <h2>
+                    Find Your Best Parking Slot
+                </h2>
+
+
+                <!-- VEHICLE -->
+                <p class="section-label">
+                    Vehicle Type
+                </p>
+
+                <div class="vehicle-options">
+
+                    <button
+                        type="button"
+                        class="vehicle-card active"
+                        data-vehicle="car"
+                    >
+                        <span class="vehicle-icon">🚗</span>
+                        <span>Car</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vehicle-card"
+                        data-vehicle="bike"
+                    >
+                        <span class="vehicle-icon">🏍️</span>
+                        <span>Bike</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vehicle-card"
+                        data-vehicle="suv"
+                    >
+                        <span class="vehicle-icon">🚙</span>
+                        <span>SUV</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vehicle-card"
+                        data-vehicle="ev"
+                    >
+                        <span class="vehicle-icon">⚡</span>
+                        <span>EV</span>
+                    </button>
+
+                </div>
+
+
+
+                <!-- REQUIREMENTS -->
+                <p class="section-label">
+                    Requirements
+                </p>
+
+                <label class="checkbox-option">
+                    <input type="checkbox" id="evCharging">
+                    <span>⚡ EV Charging</span>
+                </label>
+
+                <label class="checkbox-option">
+                    <input type="checkbox" id="accessibleParking">
+                    <span>♿ Accessible</span>
+                </label>
+
+                <label class="checkbox-option">
+                    <input type="checkbox" id="nearEntrance" checked>
+                    <span>📍 Near Entrance</span>
+                </label>
+
+
+
+                <!-- FIND -->
+                <button
+                    type="button"
+                    id="findBestButton"
+                    class="find-button"
+                >
+                    🧠 FIND BEST SLOT
+                </button>
+
+
+
+                <!-- RECOMMENDATION -->
+                <div
+                    id="recommendationBox"
+                    class="recommendation-box"
+                >
+
+                    <div class="recommendation-title">
+                        ⭐ Recommended Slot
+                    </div>
+
+                    <div
+                        id="recommendedSlot"
+                        class="recommendation-slot"
+                    >
+                        A1
+                    </div>
+
+                    <div
+                        id="recommendationMessage"
+                        class="recommendation-message"
+                    >
+                        Good choice!
+                    </div>
+
+                    <div class="entrance-note">
+                        ✓ Near Entrance
+                    </div>
+
+                </div>
+
+
+
+                <div id="my-reservations" class="navigation-anchor" aria-hidden="true"></div>
+
+                <!-- RESERVE -->
+                <button
+                    type="button"
+                    id="reserveButton"
+                    class="reserve-button"
+                >
+                    🅿️ RESERVE SLOT
+                </button>
+
+
+                <!-- RELEASE -->
+                <button
+                    type="button"
+                    id="releaseButton"
+                    class="release-button"
+                    disabled
+                >
+                    ↻ RELEASE SLOT
+                </button>
+
+
+                <!-- STATUS -->
+                <div
+                    id="reservationStatus"
+                    class="reservation-status"
+                >
+                    No slot reserved
+                </div>
+
+
+                <!-- RESET -->
+                <button
+                    type="button"
+                    id="resetButton"
+                    class="reset-button"
+                >
+                    ↻ NEW SEARCH
+                </button>
+
+            </aside>
+
+        </div>
+
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+        <section class="statistics-section" id="statistics">
+
+            <div class="statistics-heading">
+
+                <div>
+                    <h2>Parking Statistics</h2>
+                    <p class="statistics-subtitle">
+                        Current parking area overview
+                    </p>
+                </div>
+
+                <span class="usage-label">
+                    LIVE DATA
+                </span>
+
+            </div>
+
+
+            <div class="statistics-grid">
+
+                <div class="stat-card">
+                    <span class="stat-icon">🅿️</span>
+                    <strong id="totalSlots">10</strong>
+                    <span>Total Slots</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🚗</span>
+                    <strong id="statsAvailable">7</strong>
+                    <span>Available</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🚘</span>
+                    <strong id="statsOccupied">3</strong>
+                    <span>Occupied</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">⚡</span>
+                    <strong id="statsEV">1</strong>
+                    <span>EV Slots</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SELECTED SLOT
+        ========================== -->
+        <section class="slot-info-section">
+
+            <h2>
+                🅿️ Selected Slot Information
+            </h2>
+
+            <p id="slotInfoMessage">
+                Click a parking slot to view its details.
+            </p>
+
+
+            <div class="slot-details">
+
+                <div>
+                    <strong>Slot</strong>
+                    <span id="infoSlot">A1</span>
+                </div>
+
+                <div>
+                    <strong>Vehicle</strong>
+                    <span id="infoVehicle">Car</span>
+                </div>
+
+                <div>
+                    <strong>Status</strong>
+                    <span id="infoStatus">Available</span>
+                </div>
+
+                <div>
+                    <strong>Location</strong>
+                    <span id="infoLocation">Near Entrance</span>
+                </div>
+
+                <div>
+                    <strong>Feature</strong>
+                    <span id="infoFeature">Standard</span>
+                </div>
+
+            </div>
+
+        </section>
+        <!-- =========================================
+     PARKING ANALYTICS
+========================================= -->
+
+<section class="analytics-section">
+
+    <div class="analytics-header">
+        <div>
+            <h2>Parking Analytics</h2>
+            <p>Real-time parking insights and usage trends</p>
+        </div>
+
+        <div class="analytics-filter">
+            <button class="analytics-period active" data-period="today">
+                Today
+            </button>
+            <button class="analytics-period" data-period="week">
+                This Week
+            </button>
+        </div>
+    </div>
+
+    <!-- Analytics Cards -->
+    <div class="analytics-cards">
+
+        <div class="analytics-card">
+            <span class="analytics-label">Current Occupancy</span>
+            <strong id="analyticsOccupancy">27</strong>
+            <small>vehicles parked</small>
+        </div>
+
+        <div class="analytics-card">
+            <span class="analytics-label">Peak Parking Hour</span>
+            <strong id="peakHour">1:00 PM</strong>
+            <small>highest occupancy</small>
+        </div>
+
+        <div class="analytics-card">
+            <span class="analytics-label">Most Used Zone</span>
+            <strong id="mostUsedZone">Zone A</strong>
+            <small>highest usage</small>
+        </div>
+
+        <div class="analytics-card">
+            <span class="analytics-label">Average Duration</span>
+            <strong id="avgDuration">1h 42m</strong>
+            <small>per vehicle</small>
+        </div>
+
+    </div>
+
+    <!-- Today's Parking -->
+    <div class="today-parking">
+
+        <div class="analytics-title">
+            <h3>Today's Parking</h3>
+        </div>
+
+        <div class="parking-summary-grid">
+
+            <div class="summary-item">
+                <span>Vehicles Entered</span>
+                <strong id="vehiclesEntered">156</strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Vehicles Exited</span>
+                <strong id="vehiclesExited">129</strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Current Occupancy</span>
+                <strong id="todayOccupancy">27</strong>
+            </div>
+
+            <div class="summary-item">
+                <span>EV Usage</span>
+                <strong id="evUsage">18</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Occupancy Chart -->
+    <div class="occupancy-chart">
+
+        <div class="analytics-title">
+            <div>
+                <h3>Parking Occupancy — <span id="chartPeriod">Today</span></h3>
+                <p>Occupancy percentage throughout the day</p>
+            </div>
+        </div>
+
+        <div class="chart-area">
+
+            <div class="chart-y-axis">
+                <span>100%</span>
+                <span>80%</span>
+                <span>60%</span>
+                <span>40%</span>
+                <span>20%</span>
+                <span>0%</span>
+            </div>
+
+            <div class="chart-content">
+
+                <div class="chart-grid-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="chart-bars" id="occupancyChart">
+
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-value">35%</div>
+                        <div class="chart-bar" style="height:35%;"></div>
+                        <span>9 AM</span>
+                    </div>
+
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-value">62%</div>
+                        <div class="chart-bar" style="height:62%;"></div>
+                        <span>11 AM</span>
+                    </div>
+
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-value">84%</div>
+                        <div class="chart-bar" style="height:84%;"></div>
+                        <span>1 PM</span>
+                    </div>
+
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-value">71%</div>
+                        <div class="chart-bar" style="height:71%;"></div>
+                        <span>3 PM</span>
+                    </div>
+
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-value">52%</div>
+                        <div class="chart-bar" style="height:52%;"></div>
+                        <span>5 PM</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- PARKING ALERTS -->
+<section class="alerts-section">
+
+    <div class="alerts-header">
+        <div>
+            <h2>🔔 Parking Alerts</h2>
+            <p>Important parking area notifications</p>
+        </div>
+
+        <span class="alert-status">LIVE</span>
+    </div>
+
+    <div class="alerts-list" id="alertsList">
+
+        <div class="parking-alert warning">
+            <span class="alert-icon">⚠️</span>
+            <div>
+                <strong>High Occupancy</strong>
+                <p>Parking area is 85% occupied.</p>
+            </div>
+        </div>
+
+        <div class="parking-alert ev-alert">
+            <span class="alert-icon">⚡</span>
+            <div>
+                <strong>EV Charging</strong>
+                <p>EV Zone has 2 available chargers.</p>
+            </div>
+        </div>
+
+        <div class="parking-alert info">
+            <span class="alert-icon">🅿️</span>
+            <div>
+                <strong>Zone B Availability</strong>
+                <p>Zone B has 4 available spaces.</p>
+            </div>
+        </div>
+
+        <div class="parking-alert danger">
+            <span class="alert-icon">🚧</span>
+            <div>
+                <strong>Slot Unavailable</strong>
+                <p>A5 is temporarily unavailable.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     PARKING TIMER
+========================================= -->
+
+<section class="parking-timer-section">
+
+    <div class="timer-header">
+        <div>
+            <h2>⏱️ Parking Timer</h2>
+            <p>Live parking duration</p>
+        </div>
+
+        <span class="timer-live">LIVE</span>
+    </div>
+
+    <div class="timer-card">
+
+        <div class="timer-slot">
+            <span>🅿️ SLOT</span>
+            <strong id="timerSlot">--</strong>
+        </div>
+
+        <div class="timer-status">
+            <span>Status:</span>
+            <strong id="timerStatus">AVAILABLE</strong>
+        </div>
+
+        <div class="timer-duration">
+
+            <span>Parking Duration</span>
+
+            <strong id="parkingDuration">
+                00 : 00 : 00
+            </strong>
+
+        </div>
+        <!-- PARKING FEE -->
+<div class="parking-fee">
+    <div class="fee-title">
+        <span>💰 Estimated Parking Fee</span>
+        <strong id="estimatedFee">₹0</strong>
+    </div>
+
+    <div class="fee-breakdown">
+        <div>
+            <span>First Hour</span>
+            <strong id="firstHourFee">₹0</strong>
+        </div>
+
+        <div>
+            <span>Additional Hours</span>
+            <strong id="additionalHourFee">₹0</strong>
+        </div>
+    </div>
+
+    <div class="fee-total">
+        <span>Estimated Total</span>
+        <strong id="totalFee">₹0</strong>
+    </div>
+</div>
+
+        <div class="timer-entry">
+            <span>Entry:</span>
+            <strong id="timerEntry">--:--</strong>
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     SUSTAINABILITY / GREEN PARKING
+========================================= -->
+
+<section class="sustainability-section">
+
+    <div class="sustainability-header">
+        <div>
+            <h2>🌱 Smart Parking Impact</h2>
+            <p>Estimated environmental benefits from intelligent parking allocation</p>
+        </div>
+
+        <span class="eco-badge">GREEN PARKING</span>
+    </div>
+
+    <!-- CO2 MAIN CARD -->
+    <div class="co2-card">
+
+        <div class="co2-icon">🌱</div>
+
+        <div class="co2-content">
+            <span>Estimated CO₂ Saved Today</span>
+
+            <strong id="co2Saved">12.4 kg</strong>
+
+            <small>
+                Estimated value based on reduced parking search and unnecessary driving.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- IMPACT CARDS -->
+    <div class="impact-grid">
+
+        <div class="impact-card">
+            <div class="impact-icon">🚗</div>
+            <div>
+                <strong id="drivingReduced">32 min</strong>
+                <span>Unnecessary Driving Reduced</span>
+            </div>
+        </div>
+
+        <div class="impact-card">
+            <div class="impact-icon">⛽</div>
+            <div>
+                <strong id="fuelSaved">4.8 L</strong>
+                <span>Estimated Fuel Saved</span>
+            </div>
+        </div>
+
+        <div class="impact-card">
+            <div class="impact-icon">⏱️</div>
+            <div>
+                <strong id="searchTimeSaved">48 min</strong>
+                <span>Parking Search Time Saved</span>
+            </div>
+        </div>
+
+        <div class="impact-card">
+            <div class="impact-icon">⚡</div>
+            <div>
+                <strong id="evUtilization">76%</strong>
+                <span>EV Charging Utilization</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ENVIRONMENT MESSAGE -->
+    <div class="green-message">
+
+        <div class="green-message-icon">🌍</div>
+
+        <div>
+            <strong>Cleaner Parking. Smarter Cities.</strong>
+
+            <p>
+                PARK-AI helps reduce unnecessary vehicle movement,
+                minimize parking search time, lower fuel consumption,
+                and improve EV charging utilization.
+            </p>
+
+            <small>
+                * All sustainability values are estimated demo calculations.
+            </small>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================================
+     SETTINGS & HELP
+========================================= -->
+
+<section class="bottom-tools-section">
+
+    <!-- ================= SETTINGS ================= -->
+
+    <div class="settings-section" id="settings-section">
+
+        <div class="bottom-section-header">
+
+            <div class="section-title-area">
+
+                <div class="section-title-icon settings-icon">
+                    ⚙️
+                </div>
+
+                <div>
+                    <h2>PARK-AI Settings</h2>
+                    <p>Manage your smart parking preferences</p>
+                </div>
+
+            </div>
+
+            <span class="settings-status">
+                <span class="status-dot"></span>
+                SYSTEM READY
+            </span>
+
+        </div>
+
+
+        <div class="settings-grid">
+
+            <!-- Parking Notifications -->
+
+            <div class="setting-card">
+
+                <div class="setting-card-top">
+
+                    <div class="setting-icon notification-icon">
+                        🔔
+                    </div>
+
+                    <div class="setting-info">
+
+                        <h3>Parking Notifications</h3>
+
+                        <p>
+                            Receive reservation and parking alerts.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="parkingNotifications"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="setting-footer">
+                    <span class="setting-status-text">
+                        Notifications enabled
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Parking Preferences -->
+
+            <div class="setting-card">
+
+                <div class="setting-card-top">
+
+                    <div class="setting-icon location-icon">
+                        📍
+                    </div>
+
+                    <div class="setting-info">
+
+                        <h3>Parking Preferences</h3>
+
+                        <p>
+                            Use your preferred parking options.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="preferNearEntrance"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="setting-footer">
+
+                    <span class="setting-status-text">
+                        Prefer near entrance
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Auto Refresh -->
+
+            <div class="setting-card">
+
+                <div class="setting-card-top">
+
+                    <div class="setting-icon refresh-icon">
+                        🔄
+                    </div>
+
+                    <div class="setting-info">
+
+                        <h3>Auto Refresh</h3>
+
+                        <p>
+                            Keep parking information up to date.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="autoRefresh"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="setting-footer">
+
+                    <span class="setting-status-text">
+                        Auto refresh enabled
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Demo Data -->
+
+            <div class="setting-card reset-card">
+
+                <div class="setting-card-top">
+
+                    <div class="setting-icon reset-icon">
+                        🧹
+                    </div>
+
+                    <div class="setting-info">
+
+                        <h3>Demo Data</h3>
+
+                        <p>
+                            Restore the original demo parking state.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="reset-demo-button"
+                    id="settingsResetButton"
+                >
+                    <span>↻</span>
+                    RESET DEMO DATA
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HELP ================= -->
+
+    <div class="help-section" id="help-section">
+
+        <div class="bottom-section-header">
+
+            <div class="section-title-area">
+
+                <div class="section-title-icon help-icon">
+                    ❓
+                </div>
+
+                <div>
+
+                    <h2>PARK-AI Help</h2>
+
+                    <p>
+                        Quick answers for using the smart parking system
+                    </p>
+
+                </div>
+
+            </div>
+
+            <span class="help-badge">
+                SMART GUIDE
+            </span>
+
+        </div>
+
+
+        <div class="help-grid">
+
+
+            <!-- FAQ 1 -->
+
+            <div class="help-card">
+
+                <div class="help-number">
+                    01
+                </div>
+
+                <div class="help-content">
+
+                    <h3>
+                        How do I reserve a slot?
+                    </h3>
+
+                    <p>
+                        Select your vehicle, choose your preferences,
+                        click <strong>Find Best Slot</strong>, then
+                        select <strong>Reserve Slot</strong>.
+                    </p>
+
+                </div>
+
+                <span class="help-arrow">→</span>
+
+            </div>
+
+
+            <!-- FAQ 2 -->
+
+            <div class="help-card">
+
+                <div class="help-number">
+                    02
+                </div>
+
+                <div class="help-content">
+
+                    <h3>
+                        How does AI find the best slot?
+                    </h3>
+
+                    <p>
+                        PARK-AI scores available spaces using vehicle
+                        type, EV charging, accessibility, and entrance
+                        preference.
+                    </p>
+
+                </div>
+
+                <span class="help-arrow">→</span>
+
+            </div>
+
+
+            <!-- FAQ 3 -->
+
+            <div class="help-card">
+
+                <div class="help-number">
+                    03
+                </div>
+
+                <div class="help-content">
+
+                    <h3>
+                        How does the parking timer work?
+                    </h3>
+
+                    <p>
+                        The timer starts when a reservation is made
+                        and tracks the active parking duration.
+                    </p>
+
+                </div>
+
+                <span class="help-arrow">→</span>
+
+            </div>
+
+
+            <!-- FAQ 4 -->
+
+            <div class="help-card">
+
+                <div class="help-number">
+                    04
+                </div>
+
+                <div class="help-content">
+
+                    <h3>
+                        How can I release my slot?
+                    </h3>
+
+                    <p>
+                        Open your active reservation and click
+                        <strong>Release Slot</strong>. The parking
+                        space will immediately become available.
+                    </p>
+
+                </div>
+
+                <span class="help-arrow">→</span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Support Banner -->
+
+        <div class="help-support">
+
+            <div class="support-icon">
+                🤖
+            </div>
+
+            <div class="support-text">
+
+                <strong>
+                    Need more help?
+                </strong>
+
+                <p>
+                    PARK-AI Assistant is ready to help you
+                    find the right parking solution.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="support-button"
+                id="openAssistantButton"
+            >
+                ASK PARK-AI
+                <span>→</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     DIGITAL PARKING TICKET
+========================================= -->
+
+<div class="ticket-overlay" id="ticketOverlay">
+
+    <div class="ticket-modal">
+
+        <div class="ticket-header">
+            <div>
+                <span class="ticket-icon">🎫</span>
+                <span>Digital Parking Ticket</span>
+            </div>
+
+            <button class="ticket-close" id="ticketClose">×</button>
+        </div>
+
+        <div class="digital-ticket">
+
+            <div class="ticket-brand">
+                <h2>PARK-AI</h2>
+                <p>SMART PARKING</p>
+            </div>
+
+            <div class="ticket-line"></div>
+
+            <div class="ticket-details">
+
+                <div>
+                    <span>Parking Slot:</span>
+                    <strong id="ticketSlot">A4</strong>
+                </div>
+
+                <div>
+                    <span>Vehicle:</span>
+                    <strong id="ticketVehicle">Car</strong>
+                </div>
+
+                <div>
+                    <span>Entry Time:</span>
+                    <strong id="ticketTime">08:42 PM</strong>
+                </div>
+
+                <div>
+                    <span>Reservation ID:</span>
+                    <strong id="ticketReservation">PK-2048</strong>
+                </div>
+
+            </div>
+
+            <div class="ticket-qr">
+                <div id="qrCode"></div>
+            </div>
+
+            <p class="scan-message">
+                Please scan at exit.
+            </p>
+
+            <div class="ticket-line"></div>
+
+        </div>
+
+        <button class="ticket-print" id="ticketPrint">
+            🖨️ Print Ticket
+        </button>
+
+    </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- =========================================
+     PARK-AI ASSISTANT
+========================================= -->
+
+<div class="ai-chat-window" id="aiChatWindow">
+
+    <!-- CHAT HEADER -->
+
+    <div class="ai-chat-header">
+
+        <div class="ai-chat-profile">
+
+            <div class="ai-avatar">
+                🤖
+            </div>
+
+            <div>
+
+                <strong>PARK-AI Assistant</strong>
+
+                <span>
+                    <i></i>
+                    Online • Smart Parking Support
+                </span>
+
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="ai-close-button"
+            id="closeAssistantButton"
+            aria-label="Close assistant"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- CHAT MESSAGES -->
+
+    <div class="ai-chat-messages" id="aiChatMessages">
+
+        <div class="ai-message bot-message">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-bubble">
+
+                <strong>Hello! 👋</strong>
+
+                <p>
+                    I'm PARK-AI, your smart parking assistant.
+                    I can help you find slots, understand reservations,
+                    parking fees, timers, and more.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK QUESTIONS -->
+
+        <div class="quick-question-title">
+            Quick questions
+        </div>
+
+        <div class="quick-questions">
+
+            <button
+                type="button"
+                class="quick-question"
+                data-question="Find me the best parking slot"
+            >
+                🅿️ Find best slot
+            </button>
+
+            <button
+                type="button"
+                class="quick-question"
+                data-question="How do I reserve a parking slot?"
+            >
+                🎫 How do I reserve?
+            </button>
+
+            <button
+                type="button"
+                class="quick-question"
+                data-question="How does the parking timer work?"
+            >
+                ⏱️ Parking timer
+            </button>
+
+            <button
+                type="button"
+                class="quick-question"
+                data-question="How much does parking cost?"
+            >
+                💰 Parking fee
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHAT INPUT -->
+
+    <div class="ai-chat-input-area">
+
+        <input
+            type="text"
+            id="aiChatInput"
+            placeholder="Ask PARK-AI anything..."
+            autocomplete="off"
+        >
+
+        <button
+            type="button"
+            id="aiSendButton"
+            aria-label="Send message"
+        >
+            ➤
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
